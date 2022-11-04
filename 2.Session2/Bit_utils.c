@@ -17,9 +17,9 @@
 // Left Shift by NO
 #define LSHFT_REG(REG,NO)       (REG) = (REG)<<(NO) 
 // Circular Right Shift
-#define CRSHFT_REG(REG,NO)      (REG) = ((REG>>NO)|((REG)<<(sizeof(REG)-NO)))
+#define CRSHFT_REG(REG,NO)      (REG) = ((REG>>NO)|((REG)<<(8*sizeof(REG)-NO)))
 // Circular Left Shift
-#define CLSHFT_REG(REG,NO)      (REG) = ((REG<<NO)|((REG)>>(sizeof(REG)-NO)))
+#define CLSHFT_REG(REG,NO)      (REG) = ((REG<<NO)|((REG)>>(8*sizeof(REG)-NO)))
 // Assign a Value to a Register
 #define ASSIGN_REG(REG,VALUE)   (REG) =VALUE
 // Set The Register [1s]
@@ -31,27 +31,27 @@
 // Toggle a Register Value
 #define TGL_REG(REG)            (REG) ^= (-1u)   
 // Set The High Nibble in a Register
-#define SET_H_NIB(REG)          (REG) |= (~((1<<((sizeof(REG)/2)+1))-1))        //1111 0000
+#define SET_H_NIB(REG)          (REG) |= (~((1<<((8*sizeof(REG)/2)+1))-1))        //1111 0000
 // Set The Low Nibble in a Register
-#define SET_L_NIB(REG)          (REG) |= ((1<<((sizeof(REG)/2)+1))-1)           //0000 1111
+#define SET_L_NIB(REG)          (REG) |= ((1<<((8*sizeof(REG)/2)+1))-1)           //0000 1111
 // Clear The High Nibble in a Register
-#define CLR_H_NIB(REG)          (REG) &= ((1<<((sizeof(REG)/2)+1))-1)           //0000 1111
+#define CLR_H_NIB(REG)          (REG) &= ((1<<((8*sizeof(REG)/2)+1))-1)           //0000 1111
 // Clear The Low Nibble in a Register
-#define CLR_L_NIB(REG)          (REG) &= (~((1<<((sizeof(REG)/2)+1))-1))       //1111 0000
+#define CLR_L_NIB(REG)          (REG) &= (~((1<<((8*sizeof(REG)/2)+1))-1))       //1111 0000
 // Get The High Nibble in a Register
-#define GET_H_NIB(REG)          (REG) &= (~((1<<((sizeof(REG)/2)+1))-1))       //1111 0000
+#define GET_H_NIB(REG)          (REG) &= (~((1<<((8*sizeof(REG)/2)+1))-1))       //1111 0000
 // Get The Low Nibble in a Register
-#define GET_L_NIB(REG)          (REG) &= ((1<<((sizeof(REG)/2)+1))-1)           //0000 1111
+#define GET_L_NIB(REG)          (REG) &= ((1<<((8*sizeof(REG)/2)+1))-1)           //0000 1111
 // Assign The High Nibble in a Register
-#define ASSIGN_H_NIB(REG,VALUE) (REG) = (((REG) & ((1<<((sizeof(REG)/2)+1))-1)) | (VALUE<<(sizeof(REG)/2)))
+#define ASSIGN_H_NIB(REG,VALUE) (REG) = (((REG) & ((1<<((8*sizeof(REG)/2)+1))-1)) | (VALUE<<(8*sizeof(REG)/2)))
 // Assign the Low Nibble in a Register
-#define ASSIGN_L_NIB(REG,VALUE) (REG) = ((REG) & (~((1<<((sizeof(REG)/2)+1))-1)) | (VALUE))
+#define ASSIGN_L_NIB(REG,VALUE) (REG) = ((REG) & (~((1<<((8*sizeof(REG)/2)+1))-1)) | (VALUE))
 // Toggle the High Nibble in a Register
-#define TGL_H_NIB(REG)         (REG) ^= (~((1<<((sizeof(REG)/2)+1))-1))       //1111 0000
+#define TGL_H_NIB(REG)         (REG) ^= (~((1<<((8*sizeof(REG)/2)+1))-1))       //1111 0000
 // Toggle the Low Nibble in a Register
-#define TGL_L_NIB(REG)         (REG) ^= ((1<<((sizeof(REG)/2)+1))-1)           //0000 1111
+#define TGL_L_NIB(REG)         (REG) ^= ((1<<((8*sizeof(REG)/2)+1))-1)           //0000 1111
 // Swap the Nibbles in a Register
-#define SWAP_NIB(REG)          (REG) = ((REG>>(sizeof(REG)/2)|((REG)<<(sizeof(REG)/2)))   
+#define SWAP_NIB(REG)          (REG) = ((REG>>(8*sizeof(REG)/2)|((REG)<<(8*sizeof(REG)/2)))   
 
 
 
