@@ -39,11 +39,16 @@ int main(void){
 	for(int j=0; j<=i;j++)printf("%d\n",zero_index[j]);
 	//for(int j=0; j<i;j++)    
 	//printf("%d\n",size);
-    for(int j=0;j<=i;j++)  // jumping by one means to flip that 0 to one
+	max=zero_index[1];
+    for(int j=0;j<=i;j++){  // jumping by one means to flip that 0 to one
 	    if ((zero_index[j+2]-zero_index[j])>max) max =(zero_index[j+2]-zero_index[j]);
+	    if (zero_index[j]==0) max--;
+	   
+    }
 	printf("%d\n",max);    
 	return 0;
 }
+
 /***************************************************************************************************************/
 /* 3. no of bits to flip reach the other number
 xor both number
@@ -66,10 +71,27 @@ int main(void){
 		result>>=1;    
 	} 
 	printf("%d\n",count);    
-	return 0;
+	return 0;	
 }
 /*******************************************************************************************************************/
 /* 4. swap odd and even bits in integer
+left shift 
+and with 101010101
+or with right shift
+*/
+#include <stdio.h>
+#define SWAP_BITS(NUM)   (NUM)= (((NUM>>1) & (0X5555)) |(NUM<<1))
 
+int main(void){
+	int n;
+	int m;
+	scanf("%d",&n);
+	scanf("%d",&m);
+	SWAP_BITS(n);
+	SWAP_BITS(m);
+    printf("%d\n",n);
+    printf("%d\n",m);
+	return 0;
+}
 
 
