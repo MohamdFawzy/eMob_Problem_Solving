@@ -1,0 +1,38 @@
+#include <iostream>
+ using namespace std;
+ 
+ void swap(int* a,int* b){
+    *a = *a^*b;
+    *b = *a^*b;
+    *a = *a^*b;
+ }
+ 
+ void bubblesort(int* arr,int n){
+    bool swapped=0;
+    for(int iter=0;iter<n-1;iter++){
+        swapped=0;
+        for(int i=0;i<n-iter-1;i++){
+            if(arr[i]>arr[i+1]){
+                swapped=1;
+                swap(arr[i],arr[i+1]);
+            }
+        }
+        if(!swapped){
+            return;
+        }
+    }
+ }
+ 
+ 
+ int main(){
+   
+     int arr[] = { 1, 5, 8, 9, 6, 7, 3, 4, 2, 0 };
+     int n = sizeof(arr) / sizeof(arr[0]);
+     for (int i = 0; i < n; ++i)
+        cout << arr[i] << " ";
+    std::cout<<std::endl;    
+    bubblesort(arr,n) ;   
+    for (int i = 0; i < n; ++i)
+        cout << arr[i] << " ";    
+     return 0;
+ }
